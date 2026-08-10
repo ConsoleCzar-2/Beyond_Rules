@@ -209,7 +209,7 @@ A static web dashboard for bank administrators to review AI-flagged transactions
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/<your-username>/Beyond_Rules.git
+git clone https://github.com/<ConsoleCzar-2>/Beyond_Rules.git
 cd Beyond_Rules
 ```
 

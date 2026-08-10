@@ -45,7 +45,7 @@ pip install -r requirements.txt
 cp .env.example .env
 
 # Start the primary server
-python app2.py
+python app.py
 ```
 *The server will start on `http://localhost:8000`.*
 

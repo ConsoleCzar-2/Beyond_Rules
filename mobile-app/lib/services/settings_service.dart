@@ -8,7 +8,7 @@ class SettingsService {
   static const String _ipKey = 'server_ip';
   static const String _portKey = 'server_port';
 
-  static const String _defaultServerIp = '144.24.146.33';
+  static const String _defaultServerIp = '<YOUR_SERVER_IP>';
   static const String _defaultServerPort = '8000';
 
   static String _currentServerIp = _defaultServerIp;

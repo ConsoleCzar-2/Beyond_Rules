@@ -182,7 +182,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                 style: const TextStyle(color: AppColors.white),
                                 keyboardType: TextInputType.numberWithOptions(decimal: true),
                                 decoration: InputDecoration(
-                                  hintText: '144.24.146.33',
+                                  hintText: '<YOUR_SERVER_IP>',
                                   hintStyle: TextStyle(color: AppColors.white.withOpacity(0.5)),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(color: AppColors.white.withOpacity(0.3)),

@@ -198,6 +198,8 @@ A static web dashboard for bank administrators to review AI-flagged transactions
 
 ## Setup
 
+> **Important Configuration Note**: The placeholder `<YOUR_SERVER_IP>` is used in the Flutter client code (e.g., `settings_service.dart` and `signature_api_service.dart`) as well as the test notebooks. Before running the mobile app, signature app, or test notebooks, make sure to replace `<YOUR_SERVER_IP>` with the actual IP address of the machine hosting your FastAPI servers.
+
 ### Prerequisites
 
 - **Flutter** 3.8+ ([install](https://docs.flutter.dev/get-started/install))

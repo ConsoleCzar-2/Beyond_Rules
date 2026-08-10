@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import '../models/signature_models.dart';
 
 class SignatureApiService {
-  static const String baseUrl = 'http://144.24.146.33:5000'; // Change this to your FastAPI server URL
+  static const String baseUrl = 'http://<YOUR_SERVER_IP>:5000'; // Change this to your FastAPI server URL
   static const String signaturesEndpoint = '/signatures';
 
   static Future<bool> uploadSignature(SignatureData signatureData) async {

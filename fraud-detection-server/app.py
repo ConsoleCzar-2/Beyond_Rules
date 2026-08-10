@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 app = FastAPI(
     title="Bank Fraud Detection API",
     description="API for detecting fraudulent bank transactions using XGBoost",
-    version="1.0.0"
+    version="1.0.1"
 )
 
 # Global variables for model and feature columns

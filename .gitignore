@@ -1,0 +1,67 @@
+# ===========================
+# Beyond Rules — .gitignore
+# ===========================
+
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ---------- Environment / Secrets ----------
+.env
+.env.*
+!.env.example
+
+# ---------- Datasets (too large for Git) ----------
+*.csv
+!**/Sample_*.csv
+!**/robust_behavioral_data.csv
+
+# ---------- Large / Draft Notebooks ----------
+**/Try_to_GNN.ipynb
+
+# ---------- Flutter / Dart ----------
+.dart_tool/
+.packages
+build/
+pubspec.lock
+doc/api/
+*.dart.js
+*.info.json
+*.js_
+*.js.deps
+*.js.map
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# ---------- IDE ----------
+.idea/
+.vscode/
+*.iml
+*.swp
+*.swo
+*~
+
+# ---------- OS ----------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---------- Root-level PPT (copy is in docs/) ----------
+/v4 UCO Bank Hackathon.pdf
+
+# ---------- Misc ----------
+*.log
+*.tmp
+*.bak

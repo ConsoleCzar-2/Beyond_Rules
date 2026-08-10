@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Beyond Rules — Admin Dashboard for Adaptive Bank Fraud Detection">
+    <title>Beyond Rules — Admin Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                </div>
+                <div>
+                    <span class="logo-text">Beyond Rules</span>
+                    <span class="logo-sub">Admin Panel</span>
+                </div>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-section="dashboard">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-item" data-section="pending">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Pending Reviews</span>
+                <span class="badge" id="pendingBadge">5</span>
+            </a>
+            <a href="#" class="nav-item" data-section="logs">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                <span>Transaction Logs</span>
+            </a>
+            <a href="#" class="nav-item" data-section="analytics">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                <span>Analytics</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="connection-status" id="connectionStatus">
+                <span class="status-dot offline"></span>
+                <span>Mock Mode</span>
+            </div>
+            <div class="api-config">
+                <input type="text" id="apiUrl" placeholder="http://localhost:8000" class="api-input" value="">
+                <button class="btn-connect" id="btnConnect" title="Connect to live API">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="top-header">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                </button>
+                <h1 class="page-title" id="pageTitle">Dashboard</h1>
+            </div>
+            <div class="header-right">
+                <span class="timestamp" id="timestamp"></span>
+                <div class="avatar">
+                    <span>A</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Section -->
+        <section class="content-section active" id="section-dashboard">
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-label">Total Volume</span>
+                        <span class="stat-value" id="statVolume">₹12,45,680</span>
+                        <span class="stat-change positive">+12.5% from last week</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-label">Successful Transactions</span>
+                        <span class="stat-value" id="statSuccessful">847</span>
+                        <span class="stat-change positive">+8.3% from last week</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-label">Pending Reviews</span>
+                        <span class="stat-value" id="statPending">5</span>
+                        <span class="stat-change neutral">Requires attention</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon red">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-label">Fraud Rate</span>
+                        <span class="stat-value" id="statFraudRate">2.34%</span>
+                        <span class="stat-change negative">+0.2% from last week</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Row -->
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>Fraud Detection Trends</h3>
+                        <select class="chart-period" id="trendPeriod">
+                            <option value="7d">Last 7 Days</option>
+                            <option value="30d" selected>Last 30 Days</option>
+                            <option value="90d">Last 90 Days</option>
+                        </select>
+                    </div>
+                    <canvas id="trendChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>Fraud by Category</h3>
+                    </div>
+                    <canvas id="categoryChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="activity-card">
+                <div class="chart-header">
+                    <h3>Recent Flagged Transactions</h3>
+                    <a href="#" class="view-all" data-goto="pending">View All →</a>
+                </div>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Transaction ID</th>
+                                <th>Customer</th>
+                                <th>Merchant</th>
+                                <th>Amount</th>
+                                <th>Fraud Score</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recentFlaggedBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pending Reviews Section -->
+        <section class="content-section" id="section-pending">
+            <div class="section-header">
+                <h2>Pending Transaction Reviews</h2>
+                <p class="section-desc">Transactions flagged by the AI fusion model (GNN + Behavioral score ≥ 0.40) require manual review.</p>
+            </div>
+            <div class="table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Customer</th>
+                            <th>Merchant</th>
+                            <th>Category</th>
+                            <th>Amount (₹)</th>
+                            <th>Fusion Score</th>
+                            <th>Time</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pendingBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Transaction Logs Section -->
+        <section class="content-section" id="section-logs">
+            <div class="section-header">
+                <h2>Transaction Logs</h2>
+                <div class="filters">
+                    <select id="statusFilter" class="filter-select">
+                        <option value="all">All Statuses</option>
+                        <option value="paid">Paid</option>
+                        <option value="pending">Pending</option>
+                        <option value="fraud">Fraud</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+            </div>
+            <div class="table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Customer</th>
+                            <th>Merchant</th>
+                            <th>Category</th>
+                            <th>Amount (₹)</th>
+                            <th>Fraud Prob.</th>
+                            <th>Status</th>
+                            <th>Timestamp</th>
+                        </tr>
+                    </thead>
+                    <tbody id="logsBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Analytics Section -->
+        <section class="content-section" id="section-analytics">
+            <div class="section-header">
+                <h2>Fraud Analytics</h2>
+                <p class="section-desc">Deep insights into fraud patterns detected by the Beyond Rules AI system.</p>
+            </div>
+            <div class="analytics-grid">
+                <div class="chart-card">
+                    <div class="chart-header"><h3>Score Distribution</h3></div>
+                    <canvas id="scoreDistChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-header"><h3>Hourly Transaction Volume</h3></div>
+                    <canvas id="hourlyChart"></canvas>
+                </div>
+                <div class="chart-card full-width">
+                    <div class="chart-header"><h3>Model Performance — GNN vs Behavioral</h3></div>
+                    <canvas id="modelCompareChart"></canvas>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -24,7 +24,7 @@
 
 **Beyond Rules** is an adaptive fraud detection system for banks. It replaces rigid rule engines with a **multi-layered AI fusion approach** that analyses transactions at three levels simultaneously:
 1. **On-Device TFLite Behavioral Model**: Detects anomalous user interaction patterns.
-2. **Graph Neural Network (GNN)**: Analyzes transaction graph topology via Neo4j to find suspicious patterns.
+2. **Graph Neural Network (GNN)**: Analyzes transaction graph topology via Neo4j to find suspicious patterns very effectively and efficiently. Designed for scalable and robust systems.
 3. **Fusion Scoring**: Averages the scores and flags high-risk transactions for human review.
 
 This **dual-validation approach** significantly reduces false positives while catching sophisticated fraud that either model alone might miss.
